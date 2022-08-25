@@ -1,0 +1,45 @@
+{
+    "name": "catch-e/laminas-bugsnag",
+    "description": "Bugsnag notifier for the Laminas PHP framework",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laminas",
+        "bugsnag",
+        "laminas-bugsnag"
+    ],
+    "autoload": {
+        "psr-4": {
+            "CatchE\\Laminas\\Bugsnag\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "extra": {
+        "laminas": {
+            "module": "CatchE\\Laminas\\Bugsnag"
+        }
+    },
+    "require": {
+        "php": ">=8.0",
+        "bugsnag/bugsnag": "^3.28",
+        "laminas/laminas-mvc": "^2.7.9 || ^3.0.2"
+    },
+    "require-dev": {
+        "laminas/laminas-coding-standard": "~2.3.0",
+        "vimeo/psalm": "^4.7"
+    },
+    "scripts": {
+        "check": [
+            "@cs-check"
+        ],
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "static-analysis": "psalm --shepherd --stats"
+    }
+}
