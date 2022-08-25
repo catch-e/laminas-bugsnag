@@ -38,16 +38,22 @@ class BugsnagConfigurationFactory implements FactoryInterface
         } else {
             $bugsnagConfiguration->setNotifyReleaseStages($laminasBugsnagConfig['notifyReleaseStages'] ?? ['development']);
         }
+        $bugsnagConfiguration->setNotifier([
+            'name'    => 'catch-e/laminas-bugsnag',
+            'version' => Version::VERSION,
+            'url'     => 'https://github.com/catch-e/laminas-bugsnag',
+        ]);
         $bugsnagConfiguration->setSendCode((bool) ($laminasBugsnagConfig['sendCode'] ?? true));
         $bugsnagConfiguration->setAppVersion((string) ($laminasBugsnagConfig['appVersion'] ?? '1.0.0'));
         $bugsnagConfiguration->setAppType((string) ($laminasBugsnagConfig['appType'] ?? 'laminas'));
         $bugsnagConfiguration->setMemoryLimitIncrease((int) ($laminasBugsnagConfig['memoryLimitIncrease'] ?? 5242880));
         $bugsnagConfiguration->setDiscardClasses((array) ($laminasBugsnagConfig['discardClasses'] ?? []));
         $bugsnagConfiguration->setRedactedKeys((array) ($laminasBugsnagConfig['redactedKeys'] ?? []));
-        if (! is_null($laminasBugsnagConfig['hostname'])) {
+        $bugsnagConfiguration->setAutoCaptureSessions((bool) ($laminasBugsnagConfig['autoCaptureSessions'] ?? false));
+        if (isset($laminasBugsnagConfig['hostname']) && ! is_null($laminasBugsnagConfig['hostname'])) {
             $bugsnagConfiguration->setHostname($laminasBugsnagConfig['hostname']);
         }
-        if (! is_null($laminasBugsnagConfig['projectRoot'])) {
+        if (isset($laminasBugsnagConfig['projectRoot']) && ! is_null($laminasBugsnagConfig['projectRoot'])) {
             $bugsnagConfiguration->setProjectRoot($laminasBugsnagConfig['projectRoot']);
         }
 

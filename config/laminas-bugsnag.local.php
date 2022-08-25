@@ -104,6 +104,13 @@ return [
         ],
 
         /**
+         * autoCaptureSessions
+         *
+         * Set session tracking state.
+         */
+        'autoCaptureSessions' => false,
+
+        /**
          * hostname
          *
          * Set the hostname. If null it will use the default php_uname('n').

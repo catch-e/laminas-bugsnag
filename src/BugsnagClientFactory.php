@@ -33,6 +33,7 @@ class BugsnagClientFactory implements FactoryInterface
          */
         $configuration = $container->get(BugsnagConfiguration::class);
         $client        = new BugsnagClient($configuration);
+        $client->registerDefaultCallbacks();
         BugsnagHandler::register($client);
 
         return $client;
